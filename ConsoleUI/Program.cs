@@ -47,8 +47,50 @@ namespace ConsoleUI
 
             // Call each of the drive methods for one car and one motorcycle
 
-            #endregion            
-            Console.ReadLine();
+            #endregion   
+            
+            // create a list of vehicle
+            List<Vehicle> vehicles = new List<Vehicle>();
+            
+            // create 4 vehicle instances and init properties
+            Car car1 = new Car { Year = "2022", Make = "Toyota", Model = "Camry", HasTrunk = true };
+            Motorcycle moto1 = new Motorcycle { Year = "2023", Make = "Harley-Davidson", Model= "Sportster", HasSideCart =  false };
+            Vehicle vehicle1 = new Car { Year = "2018", Make = "Honda", Model = "Civic", HasTrunk = false };
+            Vehicle vehicle2 = new Motorcycle { Year = "2020", Make = "Ducati", Model = "Monster", HasSideCart = true };
+            
+            //add vehicles to list
+            vehicles.Add(car1);
+            vehicles.Add(moto1);
+            vehicles.Add(vehicle1);
+            vehicles.Add(vehicle2);
+            
+            //iterate list and display props
+            foreach (Vehicle vehicle in vehicles)
+            {
+                Console.WriteLine($"{vehicle.Year} {vehicle.Make} {vehicle.Model}");
+                
+                //check and display unique props
+                if (vehicle is Car car)
+                {
+                    Console.WriteLine($"Has Trunk: {car.HasTrunk}");
+                }
+                else if (vehicle is Motorcycle moto)
+                {
+                    Console.WriteLine($"Has SideCart: {moto.HasSideCart}");
+                }
+                Console.WriteLine(); // blank line makes it easier to read
+            }
+            //Call the Drive methods for a car and motorcycle
+            Console.WriteLine("Testing drive methods");
+            car1.DriveAbstract();
+            car1.DriveVirtual();
+            
+            Console.WriteLine(); // blank space
+            
+            moto1.DriveAbstract();
+            moto1.DriveVirtual();
+            
+            
         }
     }
 }
